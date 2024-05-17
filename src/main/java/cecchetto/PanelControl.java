@@ -2,8 +2,12 @@ package cecchetto;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PanelControl extends JFrame {
+
+    private Boolean modoEditar = false;
 
     public PanelControl(JuegoDeLaVida juegoDeLaVida) {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -15,8 +19,8 @@ public class PanelControl extends JFrame {
         JButton siguiente = new JButton("Siguiente generacion");
         panel.add(siguiente);
 
-        JCheckBox modoEditar = new JCheckBox("Modo editar");
-        panel.add(modoEditar);
+        JCheckBox checkEditar = new JCheckBox("Modo editar");
+        panel.add(checkEditar);
 
         this.add(panel);
         this.pack();
@@ -25,6 +29,17 @@ public class PanelControl extends JFrame {
                 juegoDeLaVida.getLocation().y
         );
 
+        checkEditar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modoEditar = checkEditar.isSelected();
+            }
+        });
+
+    }
+
+    public Boolean getModoEditar() {
+        return modoEditar;
     }
 
 }

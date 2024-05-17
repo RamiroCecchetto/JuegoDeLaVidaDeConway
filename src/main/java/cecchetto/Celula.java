@@ -8,8 +8,8 @@ public class Celula {
     private Estado estado = Estado.muerta;
     private Point posicion;
     private int tamanio;
-    private int WHIDTH = 50;
-    private int HEIGTH = 50;
+    static private int WHIDTH = 10;
+    private static int HEIGTH = 10;
 
     public Celula(Point posicion, int tamanio) {
         this.posicion = posicion;
@@ -22,15 +22,12 @@ public class Celula {
         return new Rectangle2D.Double(x ,y, WHIDTH, HEIGTH);
     }
 
-    public Estado getEstado() {
-        return estado;
+    public void cambiarEstado() {
+        estado = (estado.equals(Estado.muerta) ? Estado.viva : Estado.muerta);
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+    public Estado getEstado() {return estado;}
 
-    public Point getPosicion() {
-        return posicion;
-    }
+
+    public static Dimension getDimension () {return new Dimension(WHIDTH, HEIGTH);}
 }
