@@ -16,8 +16,11 @@ public class PanelControl extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        JButton siguiente = new JButton("Siguiente generacion");
-        panel.add(siguiente);
+        JButton btnSiguiente = new JButton("Siguiente generacion");
+        panel.add(btnSiguiente);
+
+        JButton btnMatar = new JButton("Matar celulas");
+        panel.add(btnMatar);
 
         JCheckBox checkEditar = new JCheckBox("Modo editar");
         panel.add(checkEditar);
@@ -29,10 +32,24 @@ public class PanelControl extends JFrame {
                 juegoDeLaVida.getLocation().y
         );
 
+        btnSiguiente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                juegoDeLaVida.siguienteGeneracion();
+            }
+        });
+
         checkEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 modoEditar = checkEditar.isSelected();
+            }
+        });
+
+        btnMatar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                juegoDeLaVida.matarCelulas();
             }
         });
 
